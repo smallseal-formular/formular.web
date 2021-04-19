@@ -1,0 +1,106 @@
+[
+    {
+        "location": "eastus",
+        "properties": {
+            "diagnosticsProfile": {
+                "bootDiagnostics": {
+                    "enabled": true
+                }
+            },
+            "hardwareProfile": {
+                "vmSize": "Standard_B1s"
+            },
+            "networkProfile": {
+                "networkInterfaces": [
+                    {
+                        "id": "mock_id"
+                    }
+                ]
+            },
+            "osProfile": {
+                "computerName": "POC1",
+                "adminUsername": "smallseal",
+                "linuxConfiguration": {
+                    "disablePasswordAuthentication": false,
+                    "provisionVMAgent": true,
+                    "patchSettings": {
+                        "patchMode": "ImageDefault"
+                    }
+                },
+                "secrets": [],
+                "allowExtensionOperations": true,
+                "requireGuestProvisionSignal": true
+            },
+            "storageProfile": {
+                "imageReference": {
+                    "offer": "UbuntuServer",
+                    "publisher": "Canonical",
+                    "sku": "16.04-LTS",
+                    "version": "latest"
+                },
+                "osDisk": {
+                    "osType": "Linux",
+                    "name": "POC1_OsDisk_1_be48158c1a634b4184f3616f7d619446",
+                    "caching": "ReadWrite",
+                    "createOption": "FromImage",
+                    "managedDisk": {
+                        "id": "mock_id"
+                    }
+                },
+                "dataDisks": []
+            }
+        }
+    },
+    {
+        "location": "japaneast",
+        "properties": {
+            "diagnosticsProfile": {
+                "bootDiagnostics": {
+                    "enabled": true
+                }
+            },
+            "hardwareProfile": {
+                "vmSize": "Standard_B1s"
+            },
+            "networkProfile": {
+                "networkInterfaces": [
+                    {
+                        "id": "mock_id"
+                    }
+                ]
+            },
+            "osProfile": {
+                "computerName": "POC2",
+                "adminUsername": "smallseal",
+                "linuxConfiguration": {
+                    "disablePasswordAuthentication": false,
+                    "provisionVMAgent": true,
+                    "patchSettings": {
+                        "patchMode": "ImageDefault"
+                    }
+                },
+                "secrets": [],
+                "allowExtensionOperations": true,
+                "requireGuestProvisionSignal": true
+            },
+            "storageProfile": {
+                "imageReference": {
+                    "offer": "UbuntuServer",
+                    "publisher": "Canonical",
+                    "sku": "16.04-LTS",
+                    "version": "latest"
+                },
+                "osDisk": {
+                    "osType": "Linux",
+                    "name": "POC2_disk1_a2bd034404e14a94bcfaac8508710983",
+                    "caching": "ReadWrite",
+                    "createOption": "FromImage",
+                    "managedDisk": {
+                        "id": "mock_id"
+                    }
+                },
+                "dataDisks": []
+            }
+        }
+    }
+]
