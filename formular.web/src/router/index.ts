@@ -1,3 +1,4 @@
+import AzureVM from '@/views/AzureVM'
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/Home.vue'
@@ -8,7 +9,12 @@ const routes: Array<RouteConfig> = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    redirect: '/vm'
+  },
+  {
+    path: '/vm',
+    name: 'vm',
+    component: () => import('../views/AzureVM/AzureVM.vue')
   },
   {
     path: '/about',
