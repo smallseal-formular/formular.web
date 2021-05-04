@@ -6,11 +6,11 @@ const getConfig = async (): Promise<any> => {
     return getConfigResponse.data;
 }
 
-let publicConfig:any = {};
+let publicConfigs:any = {};
 const  configGetterPromise = Promise.all([
     (async () => {
-        publicConfig = await getConfig();
+        publicConfigs = await getConfig();
     })(),
 ]);
 
-export {getConfig, publicConfig, configGetterPromise};
+export {getConfig, publicConfigs, configGetterPromise};

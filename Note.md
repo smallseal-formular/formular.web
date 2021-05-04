@@ -24,3 +24,7 @@ XMLHttpRequest at 'http://localhost:5000/api/azure/vm/table/getcolumn' from orig
     4.(configGetter.ts) 這個檔案就是用來產生 create vue 物件前的 promise
         * getConfig => 透過 axios.get('/appConfig.json') 取得 config 檔案
         * configGetterPromise => 確保取得 config 後才做後面的事(建立 vue 物件)
+
+# axios interceptor => axios.factory.ts
+* https://ithelp.ithome.com.tw/articles/10230336
+* 用來設定全域使用的 axios config ，像是 baseURL 等等。
