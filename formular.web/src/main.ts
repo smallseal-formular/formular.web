@@ -9,14 +9,20 @@ import 'view-design/dist/styles/iview.css';
 import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
-
+// configGetter: get config file from public/appConfig.json
+import { configGetterPromise } from '@/configGetter';
 
 Vue.config.productionTip = false
 Vue.use(ViewUI);
 Vue.use(BootstrapVue);
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+// get config then start vue
+configGetterPromise.then(
+  () => {
+    new Vue({
+      router,
+      store,
+      render: h => h(App)
+    }).$mount('#app');
+  }
+);

@@ -19,3 +19,8 @@ def api_azure_vm_get_single(rg_name):
 def azure_vm_table_get_columns():
     json_data = file_reader.get_json_from_file("./app/static/azure_vm_table_getcolumn.json")
     return jsonify(json_data)
+
+@api_azure_vm_get.route("/api/azure/vm/table/getall")
+def azure_vm_table_get_all():
+    json_data = file_reader.get_json_from_file("./app/static/azure_vm_table_getall.json")
+    return jsonify(json_data)

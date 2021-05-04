@@ -1,0 +1,16 @@
+[
+    {
+      "create_by": "small_seal", 
+      "create_date": "20210505", 
+      "destory": "TBD", 
+      "terraform_workspace": "workspace1", 
+      "vm_details": "TBD"
+    }, 
+    {
+      "create_by": "shaneshane", 
+      "create_date": "20210505", 
+      "destory": "TBD", 
+      "terraform_workspace": "workspace2", 
+      "vm_details": "TBD"
+    }
+]
