@@ -1,10 +1,20 @@
 <template>
   <div class="vm-list">
-    <v-client-table :ref="myTable" :data="tableData" :columns="columns" :options="options"></v-client-table>
+    <v-client-table :data="tableData" :columns="columns" :options="options">
+      <div slot="vmDetailButton" slot-scope="props">
+          <Button @click="onClickDetailButton(props.row.vmDetailButton)">{{props.row.vmDetailButton}}</Button>
+      </div>
+        <!-- <Button @click="modal2 = true" div slot="detroyButton" slot-scope="props" v-model="props.row.destoryButton">Destroy</Button> -->
+    </v-client-table>
+    <Modal v-model="isShowDetailModal" title="Standard" 
+          @on-ok="DetailModalOk" @on-cancel="DetailModalCancel" 
+          ok-text="Ok" cancel-text="Cancel">
+        <p>{{vmDetailInfo}}</p>
+    </Modal>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
 import {ServerTable, ClientTable, Event} from 'vue-tables-2';
 import axios from '@/modules/axios.factory'
@@ -21,22 +31,44 @@ export default Vue.extend({
   },
   data() {
     return {
-      columns: [],
-      tableData: [],
-      options: {}
+      isShowDetailModal: false,
+      vmDetailInfo: {},
+      columns: ["B", "A", "C", "vmDetailButton", "detroyButton"],
+      tableData: [
+        {"A": "a1", "B": "b1", "C":"c1", "vmDetailButton": "Detail1"},
+        {"A": "a2", "B": "b2", "C":"c2", "vmDetailButton": "Detail2"},
+        {"A": "a3", "B": "b3", "C":"c3", "vmDetailButton": "Detail3"},
+      ],
+      options: {
+      }
     }
   },
   async mounted() {
-    await axios.get('/api/azure/vm/table/getcolumn')
-               .then((res) => { this.columns = res.data })
-               .catch((error) => { console.error(error) })
-               .finally(() => { /* 不論失敗成功皆會執行 */ });
-    await axios.get('/api/azure/vm/table/getall')
-               .then((res) => { this.tableData = res.data })
-               .catch((error) => { console.error(error) })
-               .finally();
-    console.log(this.columns);
+    // await axios.get('/api/azure/vm/table/getcolumn')
+    //            .then((res) => { this.columns = res.data })
+    //            .catch((error) => { this.$Message.error(error) })
+    //            .finally(() => { /* 不論失敗成功皆會執行 */ });
+    // await axios.get('/api/azure/vm/table/getall')
+    //            .then((res) => { this.tableData = res.data })
+    //            .catch((error) => { console.error(error) })
+    //            .finally();
+    // console.log(this.columns);
   },
+  methods: {
+    onClickDetailButton(detailName: string){
+      this.isShowDetailModal = true;
+      this.vmDetailInfo = {"Detail":detailName}
+      this.$Message.info(`Clicked button, vmDetailInfo: ${JSON.stringify(this.vmDetailInfo)}`);
+    },
+    DetailModalOk() {
+      this.vmDetailInfo = {}
+      this.$Message.info(`Clicked ok, vmDetailInfo: ${JSON.stringify(this.vmDetailInfo)}`);
+    },
+    DetailModalCancel () {
+      this.vmDetailInfo = {}
+      this.$Message.info(`Clicked cancel, vmDetailInfo: ${JSON.stringify(this.vmDetailInfo)}`);
+    }
+  }
 })
 
 </script>
