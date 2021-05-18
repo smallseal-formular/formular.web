@@ -33,26 +33,22 @@ export default Vue.extend({
     return {
       isShowDetailModal: false,
       vmDetailInfo: {},
-      columns: ["B", "A", "C", "vmDetailButton", "detroyButton"],
-      tableData: [
-        {"A": "a1", "B": "b1", "C":"c1", "vmDetailButton": "Detail1"},
-        {"A": "a2", "B": "b2", "C":"c2", "vmDetailButton": "Detail2"},
-        {"A": "a3", "B": "b3", "C":"c3", "vmDetailButton": "Detail3"},
-      ],
+      columns: ["createAt", "terraformWorkspace", "resourceGroupName", "jobTrigger","vmDetailButton", "detroyButton"],
+      tableData: [],
       options: {
       }
     }
   },
   async mounted() {
-    // await axios.get('/api/azure/vm/table/getcolumn')
-    //            .then((res) => { this.columns = res.data })
-    //            .catch((error) => { this.$Message.error(error) })
-    //            .finally(() => { /* 不論失敗成功皆會執行 */ });
+    await axios.get('/api/azure/vm/table/get')
+               .then((res) => { this.tableData = res.data })
+               .catch((error) => { this.$Message.error(error) })
+               .finally(() => { /* 不論失敗成功皆會執行 */ });
+    console.log(this.tableData);
     // await axios.get('/api/azure/vm/table/getall')
     //            .then((res) => { this.tableData = res.data })
     //            .catch((error) => { console.error(error) })
     //            .finally();
-    // console.log(this.columns);
   },
   methods: {
     onClickDetailButton(detailName: string){
