@@ -71,7 +71,7 @@ export default Vue.extend({
       destroyFrom: {
         terraformWorkspace: "",
         jenkinsServerName: "eventhub",
-        jenkinsJobName: "Azure.Machine",
+        jenkinsJobName: "Azure.Machines",
         jenkinsJobBranch: "develop",
       },
       destroyResponse: {},
