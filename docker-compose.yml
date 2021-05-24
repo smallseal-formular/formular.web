@@ -1,0 +1,11 @@
+version: "3"
+services:
+  formular-web:
+    build:
+      context: ./
+      dockerfile: dockerfile
+    container_name: formular-web
+    ports:
+      - 8080:8080
+    volumes:
+      - ./appConfig.docker.json:/usr/share/nginx/html/appConfig.json
