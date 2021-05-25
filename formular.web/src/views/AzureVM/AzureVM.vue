@@ -2,10 +2,10 @@
   <div class="vm-list">
     <v-client-table :data="tableData" :columns="columns" :options="options">
       <div slot="vmDetailButton" slot-scope="props">
-          <Button @click.stop="onClickDetailButton(props.row.resourceGroupName)"></Button>
+          <Button type="primary" @click.stop="onClickDetailButton(props.row.resourceGroupName)"> Detail </Button>
       </div>
       <div slot="detroyButton" slot-scope="props">
-          <Button @click.stop="onClickDestroyButton(props.row.terraformWorkspace)"></Button>
+          <Button type="primary" @click.stop="onClickDestroyButton(props.row.terraformWorkspace)"> Destroy </Button>
       </div>
     </v-client-table>
     <Modal v-model="isShowDetailModal" title="VmDetail">
